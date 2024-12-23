@@ -1,7 +1,7 @@
 import { NodeProps } from '@xyflow/react';
 import { clsx } from 'clsx';
 
-export function FlowNode1({ id, selected }: NodeProps) {
+export function FlowNode1({ selected }: NodeProps) {
   return (
     <div className={clsx('p-5 bg-panel-translucent', { 'border border-1 border-cyan-7': selected })}>
       <div>

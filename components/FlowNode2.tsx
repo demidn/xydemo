@@ -3,7 +3,7 @@ import { clsx } from 'clsx';
 import { useRef } from "react";
 import { usePreventZoomEvent } from "@/components/usePreventZoomEvent";
 
-export function FlowNode2({ id, selected }: NodeProps) {
+export function FlowNode2({selected }: NodeProps) {
   const elementRef = useRef<HTMLDivElement>(null);
   usePreventZoomEvent(elementRef);
 
