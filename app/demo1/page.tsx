@@ -1,23 +1,35 @@
 'use client';
 
-import { Background, ReactFlow, useNodesState } from '@xyflow/react';
+import { Background, Controls, MiniMap, ReactFlow, useNodesState } from "@xyflow/react";
 import { NODE_TYPES } from '@/app/nodeTypes';
 import { Card1 } from "@/components/Card1";
 import { Card2 } from "@/components/Card2";
 import { Card3 } from "@/components/Card3";
 import { Toolbar } from "@/components/Toolbar";
 import { Card4 } from "@/components/Card4";
+import { NODES } from "@/app/demo1/nodes";
+import { useEffect, useRef } from "react";
+import { select, zoom } from "d3";
+import { noevent } from "@/components/noevent";
 
-const NODES = [
-    { id: '1', data: {}, type: 'node1', width: 200, height: 100, position: { x: 0, y: 0 } },
-    { id: '2', data: {}, type: 'node2', width: 200, height: 100, position: { x: 220, y: 0 } },
-    { id: '3', data: {}, type: 'node3', width: 200, height: 100, position: { x: 440, y: 0 } }
-];
 
 export default function Demo1() {
   const [nodes, , onNodesChange] = useNodesState(NODES);
+  const elementRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const elem = elementRef.current;
+    if(!elem){
+      return;
+    }
+
+    // console.log(elementRef);
+    // const sel = select(elem).call(zoom).on('touchstart', () => { console.log('gggg')});
+    // sel.call(zoom());
+    // consoles.log('SSS',sel)
+  }, []);
+
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full overflow-hidden" ref={elementRef}>
       <ReactFlow
         fitView
         colorMode={'dark'}
@@ -29,14 +41,26 @@ export default function Demo1() {
         onNodesChange={onNodesChange}
       >
         <Background className="bg-gray-1 dark:bg-none" />
+        <Controls
+            style={{marginBottom: "24px"}}
+            showInteractive={false}
+        />
+
+        <MiniMap
+            pannable
+            zoomable
+            className="flow-minimap hidden sm:block"
+            nodeClassName="flow-minimap-node"
+
+        />
       </ReactFlow>
 
       <Toolbar className="top-2 left-2"></Toolbar>
 
-      <Card1 className="fixed top-28 left-[20px]" />
-      <Card2 className="fixed top-28 left-[240px]" />
-      <Card3 className="fixed top-28 left-[460px]" />
-      <Card4 className="fixed top-[320px] left-[20px]" />
+      <Card1 className="fixed top-[178px] left-[20px]" />
+      {/*<Card2 className="fixed top-28 left-[240px]" />*/}
+      {/*<Card3 className="fixed top-28 left-[460px]" />*/}
+      {/*<Card4 className="fixed top-[320px] left-[20px]" />*/}
     </div>
   );
 }

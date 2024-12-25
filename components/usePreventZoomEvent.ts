@@ -8,7 +8,7 @@ export function usePreventZoomEvent(elementOrRef: HTMLElement | RefObject<HTMLEl
     if (!elem) {
       return;
     }
-
-    select(elem).call(zoom());
+// console.log('Preventing ', elem)
+    // select(elem).call(zoom());
   }, [elem]);
 }

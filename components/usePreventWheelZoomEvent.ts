@@ -9,6 +9,6 @@ export function usePreventZoomWheelEvent(elementOrRef: HTMLElement | RefObject<H
       return;
     }
 
-    select(elem).call(zoom()).on('.zoom', null)
+    // select(elem).call(zoom()).on('.zoom', null)
   }, [elem]);
 }
