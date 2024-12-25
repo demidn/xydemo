@@ -38,7 +38,10 @@ export function FlowNode2({ selected }: NodeProps) {
   const engine: string = 'dalle';
 
   return (
-    <div className={clsx('p-5 bg-panel-translucent w-[450px]', { 'border border-1 border-cyan-7': selected })} ref={elementRef}>
+    <div
+      className={clsx('p-5 bg-panel-translucent w-[450px]', { 'border border-1 border-cyan-7': selected })}
+      ref={elementRef}
+    >
       <Flex direction="column" width="100%" gap="4" mt="1">
         <Grid gap="1">
           <Text as="label">Генератор изображений</Text>
@@ -85,6 +88,7 @@ export function FlowNode2({ selected }: NodeProps) {
             resize="vertical"
             placeholder="Опишите в свободной форме, что должно быть на изображении"
           ></TextArea>
+          <textarea>sadasd as das d</textarea>
           <Text size="1" color="gray">
             Оставьте это поле пустым, если нет особых требований
           </Text>
@@ -130,6 +134,7 @@ export function FlowNode2({ selected }: NodeProps) {
                 resize="vertical"
                 placeholder="Опишите в свободной форме, чего не должно быть на изображении"
               ></TextArea>
+              <textarea>sadasd as das d</textarea>
               <Text size="1" color="gray">
                 Оставьте это поле пустым, если нет особых требований
               </Text>

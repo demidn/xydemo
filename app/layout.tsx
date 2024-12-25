@@ -13,11 +13,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   useEffect(() => {
-    console.log('ADDING');
+    console.log('ADDING111');
     document.body.addEventListener(
       'touchstart',
       (evt) => {
-        console.log('[demidn] - touch');
+        console.log('[demidn] - touch', evt);
         noevent(evt);
       },
       { passive: false },
@@ -25,18 +25,17 @@ export default function RootLayout({
     document.body.addEventListener(
       'mousewheel',
       (evt) => {
-        console.log('[demidn] - wheel');
+        console.log('[demidn] - wheel', evt);
         noevent(evt);
       },
       { passive: false },
     );
     document.body.addEventListener(
-      'scroll',
+      'wheel',
       (evt) => {
-        console.log('[demidn] - wheel');
+        console.log('[demidn] - wheel', evt);
         noevent(evt);
-      },
-      { passive: false },
+      }, {passive: false}
     );
   }, []);
   return (
