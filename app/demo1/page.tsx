@@ -1,24 +1,18 @@
 'use client';
 
-import { Background, Controls, MiniMap, ReactFlow, useNodesState } from "@xyflow/react";
+import { Background, Controls, MiniMap, ReactFlow, useNodesState } from '@xyflow/react';
 import { NODE_TYPES } from '@/app/nodeTypes';
-import { Card1 } from "@/components/Card1";
-import { Card2 } from "@/components/Card2";
-import { Card3 } from "@/components/Card3";
-import { Toolbar } from "@/components/Toolbar";
-import { Card4 } from "@/components/Card4";
-import { NODES } from "@/app/demo1/nodes";
-import { useEffect, useRef } from "react";
-import { select, zoom } from "d3";
-import { noevent } from "@/components/noevent";
-
+import { Card1 } from '@/components/Card1';
+import { Toolbar } from '@/components/Toolbar';
+import { NODES } from '@/app/demo1/nodes';
+import { useEffect, useRef } from 'react';
 
 export default function Demo1() {
   const [nodes, , onNodesChange] = useNodesState(NODES);
   const elementRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const elem = elementRef.current;
-    if(!elem){
+    if (!elem) {
       return;
     }
 
@@ -41,18 +35,9 @@ export default function Demo1() {
         onNodesChange={onNodesChange}
       >
         <Background className="bg-gray-1 dark:bg-none" />
-        <Controls
-            style={{marginBottom: "24px"}}
-            showInteractive={false}
-        />
+        <Controls style={{ marginBottom: '24px' }} showInteractive={false} />
 
-        <MiniMap
-            pannable
-            zoomable
-            className="flow-minimap hidden sm:block"
-            nodeClassName="flow-minimap-node"
-
-        />
+        <MiniMap pannable zoomable className="flow-minimap hidden sm:block" nodeClassName="flow-minimap-node" />
       </ReactFlow>
 
       <Toolbar className="top-2 left-2"></Toolbar>

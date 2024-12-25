@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from "react";
-import remarkGfm from "remark-gfm";
-import remarkBreaks from "remark-breaks";
-import rehypeRaw from "rehype-raw";
-import { Blockquote, Em, Flex, Heading, HoverCard, Link, Separator, Strong, Text } from "@radix-ui/themes";
-import Markdown from "react-markdown";
-
+import React, { useEffect, useState } from 'react';
+import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
+import rehypeRaw from 'rehype-raw';
+import { Blockquote, Em, Flex, Heading, HoverCard, Link, Separator, Strong, Text } from '@radix-ui/themes';
+import Markdown from 'react-markdown';
 
 export interface ClientTextEvent {
   type: 'text';
   id: string;
   text: string;
-  annotations: { text: string; file: string, quote: string }[];
+  annotations: { text: string; file: string; quote: string }[];
   show: boolean;
 }
 
@@ -22,22 +21,19 @@ interface AssistantMessageProps {
   onLaunchApp?: (...args: unknown[]) => void;
 }
 
-export const AssistantMessage = ({
-  message,
-  className,
-}: AssistantMessageProps & { className?: string }) => {
-
-  const [text, setText] = useState("");
+export const AssistantMessage = ({ message, className }: AssistantMessageProps & { className?: string }) => {
+  const [text, setText] = useState('');
 
   useEffect(() => {
-    let text = message.text.replace(/【[^】]*】/g, "");
+    let text = message.text.replace(/【[^】]*】/g, '');
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    message.annotations && message.annotations.forEach((annotation, index) => {
-      const path = annotation.text.replace(/sandbox:(\/)?/g, "");
-      if (text.toLowerCase().includes(path.toLowerCase())) {
-        text = text.replace(/\[.*?]\(sandbox:\/.*?\)/g, "");
-      }
-    });
+    message.annotations &&
+      message.annotations.forEach((annotation) => {
+        const path = annotation.text.replace(/sandbox:(\/)?/g, '');
+        if (text.toLowerCase().includes(path.toLowerCase())) {
+          text = text.replace(/\[.*?]\(sandbox:\/.*?\)/g, '');
+        }
+      });
     setText(text);
   }, [message]);
 
@@ -134,10 +130,10 @@ export const AssistantMessage = ({
           hr() {
             return <Separator orientation="horizontal" size="4" mt="2" />;
           },
-
         }}
-      >{text}</Markdown>
+      >
+        {text}
+      </Markdown>
     </Flex>
   );
 };
-

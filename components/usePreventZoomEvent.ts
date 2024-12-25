@@ -1,5 +1,4 @@
 import { RefObject, useEffect } from 'react';
-import { select, zoom } from 'd3';
 import { isRefObject } from './isRefObject';
 
 export function usePreventZoomEvent(elementOrRef: HTMLElement | RefObject<HTMLElement | null> | null) {
@@ -8,7 +7,7 @@ export function usePreventZoomEvent(elementOrRef: HTMLElement | RefObject<HTMLEl
     if (!elem) {
       return;
     }
-// console.log('Preventing ', elem)
+    // console.log('Preventing ', elem)
     // select(elem).call(zoom());
   }, [elem]);
 }
