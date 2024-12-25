@@ -5,7 +5,7 @@ import { Theme } from '@radix-ui/themes';
 import './globals.css';
 import { ReactFlowProvider } from '@xyflow/react';
 import React, { useEffect } from 'react';
-import { noevent } from '@/components/noevent';
+// import { noevent } from '@/components/noevent';
 
 export default function RootLayout({
   children,
@@ -13,30 +13,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   useEffect(() => {
-    console.log('ADDING111');
-    document.body.addEventListener(
-      'touchstart',
-      (evt) => {
-        console.log('[demidn] - touch', evt);
-        noevent(evt);
-      },
-      { passive: false },
-    );
-    document.body.addEventListener(
-      'mousewheel',
-      (evt) => {
-        console.log('[demidn] - wheel', evt);
-        noevent(evt);
-      },
-      { passive: false },
-    );
-    document.body.addEventListener(
-      'wheel',
-      (evt) => {
-        console.log('[demidn] - wheel', evt);
-        noevent(evt);
-      }, {passive: false}
-    );
+    // console.log('ADDING111');
+    // document.body.addEventListener(
+    //   'touchstart',
+    //   (evt) => {
+    //     console.log('[demidn] - touch', evt);
+    //     noevent(evt);
+    //   },
+    //   { passive: false },
+    // );
   }, []);
   return (
     <html lang="en">
