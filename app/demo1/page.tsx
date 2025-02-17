@@ -37,11 +37,11 @@ export default function Demo1() {
         <Background className="bg-gray-1 dark:bg-none" />
         {/*<Controls style={{ marginBottom: '24px' }} showInteractive={false} />*/}
         <ZoomControls />
+        <Toolbar className="top-2 left-2"></Toolbar>
 
         <MiniMap pannable zoomable className="flow-minimap hidden sm:block" nodeClassName="flow-minimap-node" />
       </ReactFlow>
 
-      <Toolbar className="top-2 left-2"></Toolbar>
 
       {/*<Card1 className="fixed top-[178px] left-[20px]" />*/}
       {/*<Card2 className="fixed top-28 left-[240px]" />*/}

@@ -39,7 +39,7 @@ export function FlowNode2({ selected }: NodeProps) {
 
   return (
     <div
-      className={clsx('p-5 bg-panel-translucent w-[450px]', { 'border border-1 border-cyan-7': selected })}
+      className={clsx('p-5 nodrag bg-panel-translucent w-[450px]', { 'border border-1 border-cyan-7': selected })}
       ref={elementRef}
     >
       <Flex direction="column" width="100%" gap="4" mt="1">
@@ -88,7 +88,7 @@ export function FlowNode2({ selected }: NodeProps) {
             resize="vertical"
             placeholder="Опишите в свободной форме, что должно быть на изображении"
           ></TextArea>
-          <textarea>sadasd as das d</textarea>
+          <textarea value="sadasd as das d"></textarea>
           <Text size="1" color="gray">
             Оставьте это поле пустым, если нет особых требований
           </Text>
