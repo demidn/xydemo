@@ -21,7 +21,7 @@ export function FlowNode3({ selected }: NodeProps) {
     <div className={clsx('p-5 bg-panel-translucent w-[400px]', { 'border border-1 border-cyan-7': selected })} ref={elementRef}>
       <div>
         NODE3: Added more optimizations to stop events
-        <textarea className="w-full nowheel" value={longText} rows={4} onChange={(e) => setLongText(e.target.value)}></textarea>
+        <textarea className="w-full" value={longText} rows={4} onChange={(e) => setLongText(e.target.value)}></textarea>
       </div>
     </div>
   );
