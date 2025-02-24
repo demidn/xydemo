@@ -1,6 +1,6 @@
 import { NodeProps } from '@xyflow/react';
 import { clsx } from 'clsx';
-import { useRef, useState } from 'react';
+import { useRef, useState, WheelEvent } from 'react';
 import { usePreventZoomWheelEvent } from '@/components/usePreventWheelZoomEvent';
 
 export function FlowNode3({ selected }: NodeProps) {
@@ -17,10 +17,15 @@ export function FlowNode3({ selected }: NodeProps) {
   fasdfsd
   dsaf asd f sdf sd f`);
 
+  const foo = (evt: WheelEvent) => {
+    console.log(evt)
+    evt.stopPropagation();
+  }
+
   return (
-    <div className={clsx('p-5 bg-panel-translucent w-[400px]', { 'border border-1 border-cyan-7': selected })} ref={elementRef}>
+    <div className={clsx('p-5 bg-panel-translucent w-[400px]', { 'border border-1 border-cyan-7': selected })} ref={elementRef}  onWheelCapture={foo}>
       <div>
-        NODE3: Added more optimizations to stop events
+        ANODE3: Added more optimizations to stop events
         <textarea className="w-full" value={longText} rows={4} onChange={(e) => setLongText(e.target.value)}></textarea>
       </div>
     </div>
