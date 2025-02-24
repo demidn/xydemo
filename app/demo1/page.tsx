@@ -4,12 +4,13 @@ import { Background, MiniMap, ReactFlow, useNodesState } from '@xyflow/react';
 import { NODE_TYPES } from '@/app/nodeTypes';
 import { Toolbar } from '@/components/Toolbar';
 import { NODES } from '@/app/demo1/nodes';
-import { useEffect, useRef } from 'react';
-import { ZoomControls } from "@/components/ZoomControls";
+import { useEffect, useRef, WheelEvent } from 'react';
+import { ZoomControls } from '@/components/ZoomControls';
 
 export default function Demo1() {
   const [nodes, , onNodesChange] = useNodesState(NODES);
   const elementRef = useRef<HTMLDivElement>(null);
+  // const elemRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const elem = elementRef.current;
     if (!elem) {
@@ -22,8 +23,41 @@ export default function Demo1() {
     // consoles.log('SSS',sel)
   }, []);
 
+  // useEffect(() => {
+  //   const el = elemRef.current;
+  //   if(!el){
+  //     return;
+  //   }
+  //   const zoomed = ({transform}) => {
+  //     console.log('zooming');
+  //   }
+  //
+  //   const z = zoom()
+  //       .scaleExtent([0.5, 32])
+  //       .on("zoom", zoomed);
+  //
+  //   const sel = select(el);
+  //   sel.call(z)
+  //       //.on("wheel.zoom", null);
+  //
+  // }, [])
+
+  const foo = (evt: WheelEvent<HTMLElement>) => {
+    const target = evt.target as HTMLElement;
+    console.log('Capture wheel', target.tagName === 'TEXTAREA');
+    if (target.tagName === 'TEXTAREA') {
+      evt.stopPropagation();
+    }
+  };
+
   return (
-    <div className="w-full h-full overflow-hidden" ref={elementRef}>
+    <div className="w-full h-full overflow-hidden" ref={elementRef} onWheelCapture={foo}>
+      {/*<div ref={elemRef} className="w-full h-full bg-cyan-3">*/}
+
+      {/*  <textarea value={v} onChange={evt => setV(evt.target.value)} className="mt-[300px] h-[100px] w-[200px]">*/}
+      {/*  </textarea>*/}
+
+      {/*</div>*/}
       <ReactFlow
         fitView
         colorMode={'dark'}
@@ -41,7 +75,6 @@ export default function Demo1() {
 
         <MiniMap pannable zoomable className="flow-minimap hidden sm:block" nodeClassName="flow-minimap-node" />
       </ReactFlow>
-
 
       {/*<Card1 className="fixed top-[178px] left-[20px]" />*/}
       {/*<Card2 className="fixed top-28 left-[240px]" />*/}

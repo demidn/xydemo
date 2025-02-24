@@ -1,5 +1,6 @@
 import { RefObject, useEffect } from 'react';
 import { isRefObject } from './isRefObject';
+// import { select, zoom } from "d3";
 
 export function usePreventZoomWheelEvent(elementOrRef: HTMLElement | RefObject<HTMLElement | null> | null) {
   const elem = isRefObject(elementOrRef) ? elementOrRef.current : elementOrRef;
@@ -7,7 +8,7 @@ export function usePreventZoomWheelEvent(elementOrRef: HTMLElement | RefObject<H
     if (!elem) {
       return;
     }
-
-    // select(elem).call(zoom()).on('.zoom', null)
+// console.log(elem)
+//     select(elem).call(zoom()).on('wheel.zoom', null)
   }, [elem]);
 }

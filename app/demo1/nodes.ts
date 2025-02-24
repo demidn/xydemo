@@ -33,5 +33,5 @@ export const NODES = [
   // },
   // { id: '2', data: {}, type: 'node2', width: 200, height: 100, position: { x: 490, y: 0 } },
   { id: '3', data: {}, type: 'node3', width: 200, height: 100, position: { x: 440, y: 200 } },
-  { id: '4', data: {}, type: 'node4', width: 200, height: 100, position: { x: 440, y: 500 } }
+  // { id: '4', data: {}, type: 'node4', width: 200, height: 100, position: { x: 440, y: 500 } }
 ];
