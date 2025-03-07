@@ -1,37 +1,22 @@
 'use client';
 
-import { Theme } from '@radix-ui/themes';
-
 import './globals.css';
-import { ReactFlowProvider } from '@xyflow/react';
-import React, { useEffect } from 'react';
-// import { noevent } from '@/components/noevent';
+import React from 'react';
+import { Nav } from '@/app/Nav';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  useEffect(() => {
-    // console.log('ADDING111');
-    // document.body.addEventListener(
-    //   'touchstart',
-    //   (evt) => {
-    //     console.log('[demidn] - touch', evt);
-    //     noevent(evt);
-    //   },
-    //   { passive: false },
-    // );
-  }, []);
   return (
     <html lang="en">
-      <head></head>
+      <head />
       <body className={`antialiased`}>
-        <ReactFlowProvider>
-          <Theme className="h-full" appearance={'dark'}>
-            {children}
-          </Theme>
-        </ReactFlowProvider>
+        <div className="flex flex-col h-full w-full">
+          <Nav />
+          <div className="flex-1">{children}</div>
+        </div>
       </body>
     </html>
   );
