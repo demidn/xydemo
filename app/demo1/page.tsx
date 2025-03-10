@@ -11,27 +11,27 @@ import { usePreventWheelZoom2Event } from "@/components/usePreventWheelZoom2Even
 export default function Demo1() {
   const elementRef = useRef<HTMLDivElement>(null);
   const elemRef = useRef<HTMLDivElement>(null);
-  usePreventWheelZoom2Event(elemRef)
+  // usePreventWheelZoom2Event(elemRef)
 
-  // useEffect(() => {
-  //   const el = elemRef.current;
-  //   if(!el){
-  //     return;
-  //   }
-  //   const zoomed = ({transform}) => {
-  //     console.log('zooming');
-  //   }
-  //
-  //   const z = zoom()
-  //       .scaleExtent([0.5, 32])
-  //       .on("zoom", zoomed);
-  //
-  //   const sel = select(el);
-  //   // @ts-ignore
-  //   sel.call(z)
-  //       //.on("wheel.zoom", null);
-  //
-  // }, [])
+  useEffect(() => {
+    const el = elemRef.current;
+    if(!el){
+      return;
+    }
+    const zoomed = ({transform}) => {
+      console.log('zooming');
+    }
+
+    const z = zoom()
+        .scaleExtent([0.5, 32])
+        .on("zoom", zoomed);
+
+    const sel = select(el);
+    // @ts-ignore
+    sel.call(z)
+        //.on("wheel.zoom", null);
+
+  }, [])
 
   const foo = (evt: WheelEvent<HTMLElement>) => {
     const target = evt.target as HTMLElement;
@@ -44,7 +44,7 @@ export default function Demo1() {
   return (
     <div className="w-full h-full overflow-hidden" ref={elementRef} onWheelCapture={foo}>
       <div ref={elemRef} className="w-full h-full bg-cyan-3">
-
+        Здесь
         <Textarea />
 
       </div>

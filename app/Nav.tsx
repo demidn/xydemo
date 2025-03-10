@@ -10,6 +10,7 @@ export function Nav() {
           Demo1
         </Link>
         <Link href="demo2">Demo2</Link>
+        <Link href="demo3">Demo3</Link>
       </div>
   );
 }
