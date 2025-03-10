@@ -7,11 +7,16 @@ import { useEffect, useRef, WheelEvent } from "react";
 import { select, zoom } from "d3";
 import { Textarea } from "@/components/Textarea";
 import { usePreventWheelZoom2Event } from "@/components/usePreventWheelZoom2Event";
+import { Background, MiniMap, ReactFlow, useNodesState } from "@xyflow/react";
+import { ZoomControls } from "@/components/ZoomControls";
+import { NODES } from "@/app/demo1/nodes";
+import { NODE_TYPES } from "@/app/nodeTypes";
 
 export default function Demo1() {
   const elementRef = useRef<HTMLDivElement>(null);
   const elemRef = useRef<HTMLDivElement>(null);
   // usePreventWheelZoom2Event(elemRef)
+  const [nodes, setNodes, onNodesChange] = useNodesState(NODES);
 
   useEffect(() => {
     const el = elemRef.current;
@@ -44,27 +49,25 @@ export default function Demo1() {
   return (
     <div className="w-full h-full overflow-hidden" ref={elementRef} onWheelCapture={foo}>
       <div ref={elemRef} className="w-full h-full bg-cyan-3">
-        Здесь
-        <Textarea />
+        <ReactFlow
+          className="w-full h-full"
+          fitView
+          colorMode={'dark'}
+          maxZoom={1}
+          minZoom={0.1}
+          nodesDraggable
+          nodes={nodes}
+          nodeTypes={NODE_TYPES}
+          onNodesChange={onNodesChange}
+        >
+          <Background className="bg-gray-1 dark:bg-none" />
+          {/*<Controls style={{ marginBottom: '24px' }} showInteractive={false} />*/}
+          <ZoomControls />
+          <Toolbar className="top-[60px] left-2"></Toolbar>
 
+          <MiniMap pannable zoomable className="flow-minimap hidden sm:block" nodeClassName="flow-minimap-node" />
+        </ReactFlow>
       </div>
-      {/*<ReactFlow*/}
-      {/*  fitView*/}
-      {/*  colorMode={'dark'}*/}
-      {/*  maxZoom={1}*/}
-      {/*  minZoom={0.1}*/}
-      {/*  nodesDraggable*/}
-      {/*  nodes={nodes}*/}
-      {/*  nodeTypes={NODE_TYPES}*/}
-      {/*  onNodesChange={onNodesChange}*/}
-      {/*>*/}
-      {/*  <Background className="bg-gray-1 dark:bg-none" />*/}
-      {/*  /!*<Controls style={{ marginBottom: '24px' }} showInteractive={false} />*!/*/}
-      {/*  <ZoomControls />*/}
-        <Toolbar className="top-[60px] left-2"></Toolbar>
-
-      {/*  <MiniMap pannable zoomable className="flow-minimap hidden sm:block" nodeClassName="flow-minimap-node" />*/}
-      {/*</ReactFlow>*/}
 
       {/*<Card1 className="fixed top-[178px] left-[20px]" />*/}
       {/*<Card2 className="fixed top-28 left-[240px]" />*/}

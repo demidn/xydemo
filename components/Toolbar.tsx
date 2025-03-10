@@ -7,7 +7,7 @@ export function Toolbar({ className }: { className?: string }) {
   usePreventZoomEvent(elementRef);
 
   return (
-    <div className={clsx('fixed flex items-center justify-center top-2 left-2 bg-panel-translucent h-[140px] w-[300px]', className)} ref={elementRef}>
+    <div className={clsx('fixed flex items-center justify-center top-2 left-2 bg-red-5 h-[70px] w-[300px]', className)} ref={elementRef}>
       Toolbar simulation
     </div>
   );
