@@ -18,36 +18,36 @@ export default function Demo1() {
   // usePreventWheelZoom2Event(elemRef)
   const [nodes, setNodes, onNodesChange] = useNodesState(NODES);
 
-  useEffect(() => {
-    const el = elemRef.current;
-    if(!el){
-      return;
-    }
-    const zoomed = ({transform}) => {
-      console.log('zooming');
-    }
+  // useEffect(() => {
+  //   const el = elemRef.current;
+  //   if(!el){
+  //     return;
+  //   }
+  //   const zoomed = ({transform}) => {
+  //     console.log('zooming');
+  //   }
+  //
+  //   const z = zoom()
+  //       .scaleExtent([0.5, 32])
+  //       .on("zoom", zoomed);
+  //
+  //   const sel = select(el);
+  //   // @ts-ignore
+  //   sel.call(z)
+  //       //.on("wheel.zoom", null);
+  //
+  // }, [])
 
-    const z = zoom()
-        .scaleExtent([0.5, 32])
-        .on("zoom", zoomed);
-
-    const sel = select(el);
-    // @ts-ignore
-    sel.call(z)
-        //.on("wheel.zoom", null);
-
-  }, [])
-
-  const foo = (evt: WheelEvent<HTMLElement>) => {
-    const target = evt.target as HTMLElement;
-    console.log('Capture wheel', target.tagName === 'TEXTAREA');
-    if (target.tagName === 'TEXTAREA') {
-      // evt.stopPropagation();
-    }
-  };
+  // const foo = (evt: WheelEvent<HTMLElement>) => {
+  //   const target = evt.target as HTMLElement;
+  //   console.log('Capture wheel', target.tagName === 'TEXTAREA');
+  //   if (target.tagName === 'TEXTAREA') {
+  //     // evt.stopPropagation();
+  //   }
+  // };
 
   return (
-    <div className="w-full h-full overflow-hidden" ref={elementRef} onWheelCapture={foo}>
+    <div className="w-full h-full overflow-hidden" ref={elementRef}>
       <div ref={elemRef} className="w-full h-full bg-cyan-3">
         <ReactFlow
           className="w-full h-full"

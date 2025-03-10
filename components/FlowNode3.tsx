@@ -16,9 +16,9 @@ export function FlowNode3({ selected }: NodeProps) {
   dsaf asd f sdf sd f`);
 
   return (
-    <div className={clsx('p-5 bg-panel-translucent nowheel w-[400px]', { 'border border-1 border-cyan-7': selected })}>
+    <div className={clsx('p-5 bg-panel-translucent nodrag nowheel w-[400px]', { 'border border-1 border-cyan-7': selected })}>
       <div>
-        AAAANODE311: Added more optimizations to stop events
+        <span className="text-accent-4">AAAANODE311: Added more optimizations to stop events</span>
         <div ref={elementRef} className="nowheel nodrag">
           <textarea
             className="w-full"
