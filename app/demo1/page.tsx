@@ -42,7 +42,7 @@ export default function Demo1() {
     const target = evt.target as HTMLElement;
     console.log('Capture wheel', target.tagName === 'TEXTAREA');
     if (target.tagName === 'TEXTAREA') {
-      evt.stopPropagation();
+      // evt.stopPropagation();
     }
   };
 
