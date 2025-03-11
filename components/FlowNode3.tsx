@@ -3,8 +3,6 @@ import { clsx } from 'clsx';
 import { useRef, useState } from 'react';
 
 export function FlowNode3({ selected }: NodeProps) {
-  const elementRef = useRef<HTMLDivElement>(null);
-
   const [longText, setLongText] = useState(`dsfdsa f ds f ds fsd f 
   dsf sdf sdf sdfsdfsdfsdf 
   dsfsd
@@ -16,10 +14,10 @@ export function FlowNode3({ selected }: NodeProps) {
   dsaf asd f sdf sd f`);
 
   return (
-    <div className={clsx('p-5 bg-panel-translucent nodrag nowheel w-[400px]', { 'border border-1 border-cyan-7': selected })}>
+    <div className={clsx('p-5 bg-panel-translucent w-[400px]', { 'border border-1 border-cyan-7': selected })}>
       <div>
-        <span className="text-accent-4">AAAANODE311: Added more optimizations to stop events</span>
-        <div ref={elementRef} className="nowheel nodrag">
+        <span className="text-accent-9">NEW TST 2025 03 11</span>
+        <div className="nodrag nowheel">
           <textarea
             className="w-full"
             value={longText}
